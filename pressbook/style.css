@@ -1,0 +1,235 @@
+@import url("assets/fonts/fonts.css");
+
+/* ===== Charte BSOW — Le Spirituel ===== */
+:root {
+  --noir: #0d0c0b;
+  --noir-2: #171513;
+  --ivoire: #f4efe6;
+  --ivoire-2: #e9e1d3;
+  --or: #c6a15b;
+  --or-clair: #e2c78f;
+  --brun: #6b5a44;
+  --texte: #2a2622;
+  --gris: #8b8379;
+  --serif: "Cormorant Garamond", "Libertinus Serif", Georgia, serif;
+  --sans: "Montserrat", "Inter", Helvetica, Arial, sans-serif;
+}
+
+@page { size: A4; margin: 0; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { background: #3a3632; }
+body {
+  font-family: var(--sans);
+  font-weight: 400;
+  color: var(--texte);
+  font-size: 9.6pt;
+  line-height: 1.6;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ===== Page ===== */
+.page {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  background: var(--ivoire);
+  page-break-after: always;
+  break-after: page;
+}
+.page:last-child { page-break-after: auto; break-after: auto; }
+@media screen {
+  body { padding: 12mm 0; }
+  .page { margin: 0 auto 12mm; box-shadow: 0 10px 40px rgba(0,0,0,.45); }
+}
+
+.page.dark { background: var(--noir); color: var(--ivoire-2); }
+
+.inner { position: absolute; inset: 20mm 18mm 22mm; }
+
+/* En-tête / pied */
+.runhead {
+  position: absolute; top: 10mm; left: 18mm; right: 18mm;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 6.5pt; letter-spacing: .32em; text-transform: uppercase; color: var(--gris);
+}
+.runhead b { color: var(--or); font-weight: 600; }
+.folio {
+  position: absolute; bottom: 9mm; left: 18mm; right: 18mm;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 6.5pt; letter-spacing: .3em; text-transform: uppercase; color: var(--gris);
+  border-top: .3mm solid rgba(198,161,91,.45); padding-top: 3mm;
+}
+.folio .num { font-family: var(--serif); font-size: 11pt; letter-spacing: 0; color: var(--or); font-weight: 600; }
+.dark .folio { color: #7d746a; }
+
+/* Titres */
+.kicker {
+  display: flex; align-items: center; gap: 4mm;
+  font-size: 7pt; font-weight: 600; letter-spacing: .38em; text-transform: uppercase; color: var(--or);
+}
+.kicker::after { content: ""; flex: 0 0 18mm; height: .3mm; background: var(--or); }
+.kicker .n { font-family: var(--serif); font-size: 13pt; letter-spacing: 0; font-weight: 600; }
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.02; }
+h1 { font-size: 40pt; letter-spacing: -.01em; margin: 4mm 0 3mm; color: var(--noir); }
+.dark h1 { color: var(--ivoire); }
+h1 em, h2 em { font-style: italic; font-weight: 500; color: var(--or); }
+h2 { font-size: 21pt; color: var(--noir); margin-bottom: 2.5mm; }
+.dark h2 { color: var(--ivoire); }
+h3 {
+  font-family: var(--sans); font-size: 7.2pt; font-weight: 700; letter-spacing: .28em;
+  text-transform: uppercase; color: var(--or); margin-bottom: 2mm;
+}
+.lead {
+  font-family: var(--serif); font-size: 14.5pt; line-height: 1.35; font-style: italic; color: var(--brun);
+  max-width: 150mm;
+}
+.dark .lead { color: var(--or-clair); }
+p + p { margin-top: 2.6mm; }
+strong { font-weight: 600; color: var(--noir); }
+.dark strong { color: var(--ivoire); }
+
+.rule { height: .3mm; background: var(--or); width: 22mm; margin: 6mm 0; }
+
+/* Photos */
+.ph { position: relative; overflow: hidden; background: #222; }
+.ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ph figcaption, .cap {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 6mm 3.5mm 2.5mm;
+  background: linear-gradient(transparent, rgba(0,0,0,.72));
+  color: #f4efe6; font-size: 6pt; letter-spacing: .26em; text-transform: uppercase; font-weight: 500;
+}
+
+/* Grilles utilitaires */
+.cols { display: grid; gap: 8mm; }
+.c2 { grid-template-columns: 1fr 1fr; }
+.c-7-5 { grid-template-columns: 7fr 5fr; }
+.c-5-7 { grid-template-columns: 5fr 7fr; }
+
+.quote {
+  font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 17pt; line-height: 1.3;
+  color: var(--noir); border-left: .6mm solid var(--or); padding-left: 6mm;
+}
+.dark .quote { color: var(--ivoire); }
+
+.tag {
+  display: inline-block; font-size: 6.4pt; letter-spacing: .24em; text-transform: uppercase; font-weight: 600;
+  border: .25mm solid var(--or); color: var(--or); padding: 1.2mm 3mm; margin: 0 1.5mm 1.5mm 0;
+}
+
+/* ===== 1. Couverture ===== */
+.cover { background: var(--noir); color: var(--ivoire); }
+.cover .bg { position: absolute; inset: 0; }
+.cover .bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; filter: contrast(1.05) saturate(.85); }
+.cover .shade {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(13,12,11,.55) 0%, rgba(13,12,11,0) 22%, rgba(13,12,11,0) 45%, rgba(13,12,11,.88) 70%, var(--noir) 100%);
+}
+.cover .top {
+  position: absolute; top: 14mm; left: 18mm; right: 18mm;
+  display: flex; justify-content: space-between;
+  font-size: 7pt; letter-spacing: .4em; text-transform: uppercase; color: var(--or-clair);
+}
+.cover .frame { position: absolute; inset: 8mm; border: .3mm solid rgba(198,161,91,.55); pointer-events: none; }
+.cover .bottom { position: absolute; left: 18mm; right: 18mm; bottom: 18mm; }
+.cover .logo { width: 128mm; margin-left: -4mm; display: block; }
+.cover .spirit {
+  font-family: var(--serif); font-size: 15pt; letter-spacing: .55em; text-transform: uppercase; color: var(--or);
+  margin: 2mm 0 6mm; font-weight: 600;
+}
+.cover .roles { font-size: 7.5pt; letter-spacing: .3em; text-transform: uppercase; color: var(--ivoire-2); }
+.cover .line { display: flex; align-items: center; gap: 5mm; margin-top: 7mm; padding-top: 5mm; border-top: .3mm solid rgba(198,161,91,.5); }
+.cover .line span { font-size: 7pt; letter-spacing: .3em; text-transform: uppercase; color: var(--or-clair); }
+.cover .line i { width: 1.2mm; height: 1.2mm; background: var(--or); transform: rotate(45deg); display: inline-block; }
+
+/* ===== Fiche identité ===== */
+.fiche { display: grid; grid-template-columns: 1fr 1fr; border-top: .3mm solid var(--or); }
+.fiche div { padding: 3mm 0; border-bottom: .25mm solid rgba(107,90,68,.25); }
+.fiche div:nth-child(odd) { padding-right: 5mm; }
+.fiche dt { font-size: 6pt; letter-spacing: .28em; text-transform: uppercase; color: var(--gris); font-weight: 600; }
+.fiche dd { font-family: var(--serif); font-size: 12.5pt; font-weight: 600; color: var(--noir); line-height: 1.2; margin-top: .6mm; }
+
+.toc { list-style: none; columns: 2; column-gap: 8mm; }
+.toc li { display: flex; gap: 3mm; align-items: baseline; padding: 1.6mm 0; border-bottom: .25mm dotted rgba(107,90,68,.35); break-inside: avoid; font-size: 8pt; }
+.toc .n { font-family: var(--serif); color: var(--or); font-weight: 700; font-size: 11pt; width: 7mm; }
+.toc .p { margin-left: auto; color: var(--gris); font-size: 7pt; }
+
+/* ===== LIKOUNDOU Beat ===== */
+.fusion { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+.fusion > div { background: var(--noir-2); color: var(--ivoire-2); padding: 5mm 4.5mm; border-top: .6mm solid var(--or); }
+.fusion b { display: block; font-family: var(--serif); font-size: 15pt; color: var(--ivoire); font-weight: 600; line-height: 1.1; }
+.fusion span { font-size: 6.6pt; letter-spacing: .2em; text-transform: uppercase; color: var(--or-clair); }
+.equation {
+  display: flex; align-items: center; justify-content: center; gap: 3mm; flex-wrap: wrap;
+  font-family: var(--serif); font-size: 12pt; color: var(--noir); font-weight: 600;
+}
+.equation i { font-style: normal; color: var(--or); font-size: 15pt; }
+.equation .res { background: var(--noir); color: var(--or-clair); padding: 1.5mm 4mm; letter-spacing: .08em; }
+
+/* ===== Fûtunu ===== */
+.futunu .bg { position: absolute; inset: 0; }
+.futunu .bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: grayscale(1) contrast(1.15) brightness(1.4); }
+.futunu .shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13,12,11,.97) 0%, rgba(13,12,11,.9) 50%, rgba(13,12,11,.25) 75%, rgba(13,12,11,0) 100%); }
+.futunu .word {
+  font-family: var(--serif); font-size: 78pt; line-height: .9; font-weight: 700; letter-spacing: .02em; color: var(--ivoire);
+}
+.futunu .word em { color: var(--or); font-style: normal; }
+
+/* ===== Thèmes ===== */
+.themes { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
+.themes > div { display: flex; gap: 4mm; align-items: baseline; padding: 3.2mm 0; border-bottom: .25mm solid rgba(107,90,68,.25); }
+.themes .n { font-family: var(--serif); font-size: 13pt; color: var(--or); font-weight: 700; width: 8mm; }
+.themes b { font-family: var(--serif); font-size: 14pt; font-weight: 600; color: var(--noir); }
+.themes small { display: block; font-size: 7pt; color: var(--gris); }
+
+.triad { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; border-top: .3mm solid var(--or); border-bottom: .3mm solid var(--or); }
+.triad div { padding: 5mm 2mm; }
+.triad div + div { border-left: .25mm solid rgba(198,161,91,.45); }
+.triad b { font-family: var(--serif); font-size: 22pt; font-style: italic; font-weight: 500; color: var(--noir); display: block; line-height: 1; }
+.triad span { font-size: 6.4pt; letter-spacing: .26em; text-transform: uppercase; color: var(--gris); }
+
+/* ===== Faits marquants ===== */
+.award { background: var(--noir); color: var(--ivoire-2); padding: 7mm; position: relative; }
+.award .badge {
+  font-size: 6.4pt; letter-spacing: .3em; text-transform: uppercase; color: var(--noir); background: var(--or);
+  display: inline-block; padding: 1.2mm 3mm; font-weight: 700; margin-bottom: 3mm;
+}
+.award h2 { color: var(--ivoire); }
+
+/* ===== Discographie ===== */
+.disco { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm 8mm; }
+.track { display: grid; grid-template-columns: 40mm 1fr; gap: 4.5mm; align-items: stretch; }
+.track .cover-art { width: 40mm; height: 40mm; overflow: hidden; background: #111; }
+.track .cover-art img { width: 100%; height: 100%; object-fit: cover; }
+.track .no { font-family: var(--serif); font-size: 26pt; line-height: .8; color: var(--or); font-weight: 700; }
+.track h2 { font-size: 15.5pt; margin: 1.5mm 0 1mm; line-height: 1.05; }
+.track .date { font-size: 6.8pt; letter-spacing: .2em; text-transform: uppercase; color: var(--gris); }
+.track .link { display: flex; align-items: center; gap: 2.5mm; margin-top: 2.5mm; }
+.track .link img { width: 13mm; height: 13mm; }
+.track .link a { font-size: 7pt; color: var(--brun); text-decoration: none; line-height: 1.35; }
+.track .link a b { display: block; font-size: 6pt; letter-spacing: .24em; text-transform: uppercase; color: var(--or); }
+
+/* ===== Galerie ===== */
+.mosaic { display: grid; gap: 2.5mm; }
+
+/* ===== Contact ===== */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: .3mm solid var(--or); border-bottom: .3mm solid var(--or); }
+.stats div { padding: 5mm 3mm; }
+.stats div + div { border-left: .25mm solid rgba(198,161,91,.35); }
+.stats b { font-family: var(--serif); font-size: 26pt; color: var(--ivoire); font-weight: 600; line-height: 1; display: block; }
+.stats .plat { font-size: 6.4pt; letter-spacing: .3em; text-transform: uppercase; color: var(--or); font-weight: 700; }
+.stats small { display: block; font-size: 7pt; color: #a59c90; margin-top: 1mm; }
+
+.contact-card { border: .3mm solid rgba(198,161,91,.6); padding: 7mm; display: grid; grid-template-columns: 1fr auto; gap: 6mm; align-items: center; }
+.contact-card .row { display: grid; grid-template-columns: 26mm 1fr; padding: 1.8mm 0; border-bottom: .25mm solid rgba(198,161,91,.2); font-size: 8.6pt; }
+.contact-card .row span { font-size: 6.2pt; letter-spacing: .26em; text-transform: uppercase; color: var(--or); font-weight: 600; padding-top: .6mm; }
+.contact-card .row a, .contact-card .row div { color: var(--ivoire); text-decoration: none; }
+.qrbox { text-align: center; font-size: 5.8pt; letter-spacing: .24em; text-transform: uppercase; color: var(--or-clair); }
+.qrbox .q { background: var(--ivoire); padding: 2.5mm; width: 30mm; height: 30mm; margin-bottom: 2mm; }
+.qrbox .q img { width: 100%; height: 100%; display: block; }
